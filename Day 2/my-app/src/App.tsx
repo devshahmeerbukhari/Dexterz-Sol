@@ -1,34 +1,45 @@
-import { useState, useEffect } from 'react';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
+import { delay, filter, from, map, mergeMap } from "rxjs";
 
-// Example Observable (Simulating data updates)
-const createCounterObservable = () => {
-  let count = 0;
-  const listeners: any = [];
+{
+  /*https://jsonplaceholder.typicode.com/posts*/
+}
 
-  const subscribe = (callback:any) => {
-    listeners.push(callback);
-  };
+const numberObservable = from([1, 2, 3, 4, 5]);
+const squareNumber = numberObservable.pipe(
+  filter((val) => val > 2),
+  mergeMap((val) => from([val]).pipe(delay(1000 * val))),
+  map((val) => val * val)
+);
 
-  const emit = () => {
-    count++;
-    listeners.forEach((callback: any) => callback(count));
-  };
-
-  setInterval(emit, 1000); // Update every second
-  return { subscribe };
-};
-
-const counterObservable = createCounterObservable();
-function App() {
-  const [count, setCount] = useState(0);
-
+const useObservable = (subscriber: any, setter:any) => {
   useEffect(() => {
-    const updateCount = (newCount: any) => setCount(newCount);
-    counterObservable.subscribe(updateCount);
-  }, []);
+    const subscription = subscriber.subscribe({
+      next(result:any){
+        setter(result)
+        console.log(result)
+      },
+      complete(){
+        console.log("Data Emittion Completed")
+      },
+      error(err: any){
+        console.log("Error Occurs: ", err)
+      }
+    }
+    );
 
-  return <div>Counter: {count}</div>;
+    // Cleanup the subscription when the component is unmounted
+    return () => subscription.unsubscribe();
+  }, [subscriber, setter]);
+}
+
+function App() {
+  const [currentNumber, setCurrentNumber] = useState(0);
+  useObservable(squareNumber, setCurrentNumber)
+  
+
+  return <div>Current Number is: {currentNumber}</div>;
 }
 
 export default App;
