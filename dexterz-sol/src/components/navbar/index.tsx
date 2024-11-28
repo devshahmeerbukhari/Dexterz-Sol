@@ -5,7 +5,7 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="bg-white-300">
+    <div className="bg-blue-100">
       <div className="flex justify-between items-center px-4 sm:px-10 lg:px-20">
         {/* Logo */}
         <div className="flex items-center">
