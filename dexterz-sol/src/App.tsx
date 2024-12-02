@@ -6,6 +6,8 @@ import AboutPage from "./components/about";
 import ServicesPage from "./components/services";
 import ProjectPage from "./components/projects";
 import ContactPage from "./components/contact";
+import Footer from "./components/footer";
+import AboutSection from "./components/aboutSection";
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
         <Route path="/projects/:slug" element={<ProjectPage/>}/>
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
+      <AboutSection/>
+      <Footer/>
     </Router>
   );
 }
