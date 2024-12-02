@@ -8,6 +8,7 @@ import ProjectPage from "./components/projects";
 import ContactPage from "./components/contact";
 import Footer from "./components/footer";
 import AboutSection from "./components/aboutSection";
+import Details from "./components/details";
 
 
 function App() {
@@ -18,11 +19,11 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/services" element={<ServicesPage/>}/>
+        <Route path="/details/:slug" element={<Details/>}/>
         <Route path="/projects" element={<ProjectPage/>}/>
-        <Route path="/projects/:slug" element={<ProjectPage/>}/>
+        <Route path="/details/:slug" element={<Details/>}/>
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
-      <AboutSection/>
       <Footer/>
     </Router>
   );

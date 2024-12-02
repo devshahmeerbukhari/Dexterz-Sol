@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { VerifiedUser } from "@mui/icons-material";
-
+import AboutSection from "../aboutSection";
 
 
 function HomePage() {
   return (
-    <div
+    <>
+      <div
       className="h-screen bg-cover bg-center flex items-center justify-center"
       style={{
         backgroundImage: "url('/assets/images/logo/home-bg.jpg')",
@@ -48,6 +49,8 @@ function HomePage() {
         </div>
       </div>
     </div>
+    <AboutSection/>
+    </>
   );
 }
 

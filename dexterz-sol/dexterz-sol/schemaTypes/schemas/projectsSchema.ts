@@ -30,7 +30,13 @@ export default {
         name: 'slug',
         title: 'slugLink',
         type: 'string',
-        description: 'Project Details',
+        description: 'Slug',
+      },
+      {
+        name: 'detail',
+        title: 'detail',
+        type: 'text',
+        description: 'A Detail description of the item',
       },
     ],
   };

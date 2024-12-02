@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from "react";
 import client from "../../client";
 import Card from "../sanityContent/Card";
+import { ProjectDetails } from "../../StoreDetails/projectsServicesData";
+import { ServicesDetails } from "../../StoreDetails/projectsServicesData";
+import { Project } from "../../types/project";
 
-type Project = {
-  name: string;
-  description: string;
-  image: {
-    asset: {
-      _ref: string;
-      url: string;
-    };
-  };
-  slug: string;
-};
 
 function ProjectPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -30,6 +22,7 @@ function ProjectPage() {
     fetchData();
   }, []);
 
+  console.log("Project Details: ", ProjectDetails)
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mx-4 lg:mx-20 m-28">

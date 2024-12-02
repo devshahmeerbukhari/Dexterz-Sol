@@ -22,7 +22,7 @@ type ProjectCardProps = {
 const urlFor = (source: any) => builder.image(source).width(800).url();
 
 const Card: React.FC<ProjectCardProps> = ({ name, description, image, slug }) => {
-  
+  // {console.log("In Card: ", slug)}
   return (
     <div className="border rounded-lg p-4">
       {/* Project Image */}
@@ -46,7 +46,7 @@ const Card: React.FC<ProjectCardProps> = ({ name, description, image, slug }) =>
       {slug && (
         <div className="mt-10">
           <a
-            href={`/project/${slug}`}
+            href={`/details/${slug}`}
             className="text-blue-500 hover:text-blue-700"
           >
             View Details
